@@ -20,41 +20,52 @@ private:
 	double m_dMortarFt;
 	double m_dMortarFc;
 
+	double m_dConcretE;
+	double m_dConcretV;
+	double m_dConcretFt;
+	double m_dConcretFc;
+
+	double m_dInterfaceE;	
+	double m_dInterfaceV;
 	double m_dInterfaceFt;
 	double m_dInterfaceFc;
 
 	double m_dMortarDensity;   //砂浆密度（和骨料密度均是体积密度，与二维程序不同，注意差别）(Juny 2014.8.27)
-	double m_dAggDensity;    //骨料密度
+	double m_dConcretDensity;  //混凝土密度
+	//double m_dAggDensity;    //骨料密度
 	double m_dBondRatio;// 加载端摩擦约束系数（切向砂浆弹簧刚度）
 
-	double m_dInterfaceE;	
-	double m_dInterfaceV;
-
-	double m_dAggE;
-	double m_dAggV;	
+	//double m_dAggE;
+	//double m_dAggV;	
 
 	//单元的参数,目前为直接让其等于输出的宏观材料参数
-	double m_dMorEleFt;    //砂浆单元抗拉强度; 最大拉应力
-	double m_dMorEleFc;    //砂浆单元抗压强度
 	double m_dMorEleE;     //砂浆单元弹性模量;
 	double m_dMorEleV;     //砂浆单元泊松比;
+	double m_dMorEleFt;    //砂浆单元抗拉强度; 最大拉应力
+	double m_dMorEleFc;    //砂浆单元抗压强度
 
-	double m_dIntEleFt;    //界面单元抗拉强度; 最大拉应力
-	double m_dIntEleFc;    //界面单元抗压强度
+	double m_dConEleE;     //混凝土单元弹性模量
+	double m_dConEleV;     //混凝土单元泊松比；
+	double m_dConEleFt;    //混凝土单元抗拉强度；最大拉应力
+	double m_dConEleFc;    //混凝土单元抗压强度；
 
 	double m_dIntEleE;     //界面单元弹性模量;
 	double m_dIntEleV;     //界面单元泊松比;
+	double m_dIntEleFt;    //界面单元抗拉强度; 最大拉应力
+	double m_dIntEleFc;    //界面单元抗压强度
 
-	double m_dAggEleE;
-	double m_dAggEleV;
+	//double m_dAggEleE;
+	//double m_dAggEleV;
 
 	//弹簧刚度系数
 	double m_dMorSprKn;    //砂浆弹簧法向刚度系数;
 	double m_dMorSprKt;    //砂浆弹簧切向刚度系数;
+	double m_dConSprKn;    //混凝土弹簧法向刚度系数;
+	double m_dConSprKt;    //混凝土弹簧法向刚度系数;
 	double m_dIntSprKn;    //界面弹簧法向刚度系数;
 	double m_dIntSprKt;    //界面弹簧切向刚度系数;
-	double m_dAggSprKn;    //骨料弹簧法向刚度系数;
-	double m_dAggSprKt;    //骨料弹簧切向刚度系数;
+	//double m_dAggSprKn;    //骨料弹簧法向刚度系数;
+	//double m_dAggSprKt;    //骨料弹簧切向刚度系数;
 
 	double m_dBondKn;
 	double m_dBondKt;
@@ -73,7 +84,7 @@ public:
 	                  //待得出规律后在此处完善转化关系，界时对话框直接输入宏观材料参数不必在乘系数之类
 	void SetSprStiff(double MorEleE, double MorEleV, double BondRatio);   //砂浆弹簧刚度系数
 	void SetIntStiff(double IntEleE, double IntEleV);  //界面弹簧刚度系数
-	void SetAggStiff(double AggEleE, double AggEleV);  //骨料弹簧刚度系数
+	//void SetAggStiff(double AggEleE, double AggEleV);  //骨料弹簧刚度系数
 
 
 	void SetMortarFt(double MortarFt);
@@ -81,16 +92,22 @@ public:
 	void SetMortarE(double MortarE);
 	void SetMortarV(double MortarV);
 
+	void SetConcretFt(double ConcretFt);
+	void SetConcretFc(double ConcretFc);
+	void SetConcretE(double ConcretE);
+	void SetConcretV(double ConcretV);
+
 	void SetInterfaceFt(double InterfaceFt);
 	void SetInterfaceFc(double InterfaceFc);
 	void SetInterfaceE(double InterfaceE);
 	void SetInterfaceV(double InterfaceV);	
 
-	void SetAggE(double AggE);
-	void SetAggV(double AggV);
+	//void SetAggE(double AggE);
+	//void SetAggV(double AggV);
 
 	void SetMortarDensity(double MortarDensity);
-	void SetAggDensity(double AggDensity);
+	void SetConcretDensity(double ConcretDensity);
+	//void SetAggDensity(double AggDensity);
 	void SetBondRatio(double BondRatio);	
 
 	double GetMortarFt();
@@ -98,16 +115,22 @@ public:
 	double GetMortarE();
 	double GetMortarV();
 
+	double GetConcretFt();
+	double GetConcretFc();
+	double GetConcretE();
+	double GetConcretV();
+
 	double GetInterfaceFt();
 	double GetInterfaceFc();
 	double GetInterfaceE();
 	double GetInterfaceV();	
 
-	double GetAggE() { return m_dAggE; }
-	double GetAggV() { return m_dAggV; }	
+	//double GetAggE() { return m_dAggE; }
+	//double GetAggV() { return m_dAggV; }	
 
 	double GetMortarDensity();
-	double GetAggDensity();
+	double GetConcretDensity();
+	//double GetAggDensity();
 	double GetBondRatio() { return m_dBondRatio; }
 
 	double GetMorEleFt();
@@ -115,20 +138,27 @@ public:
 	double GetMorEleE();
 	double GetMorEleV();
 
+	double GetConEleFt();
+	double GetConEleFc();
+	double GetConEleE();
+	double GetConEleV();
+
 	double GetIntEleFt();
 	double GetIntEleFc();
 	double GetIntEleE();
 	double GetIntEleV();
 
-	double GetAggEleE();
-	double GetAggEleV();
+	//double GetAggEleE();
+	//double GetAggEleV();
 
 	double GetMorSprKn();
 	double GetMorSprKt();
+	double GetConSprKn();
+	double GetConSprKt();
 	double GetIntSprKn();
 	double GetIntSprKt();
-	double GetAggSprKn();
-	double GetAggSprKt();
+	//double GetAggSprKn();
+	//double GetAggSprKt();
 
 	double GetContactKn();
 	double GetContactKt();

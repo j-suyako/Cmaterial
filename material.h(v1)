@@ -31,6 +31,7 @@ private:
 	double m_dInterfaceFc;
 
 	double m_dMortarDensity;   //砂浆密度（和骨料密度均是体积密度，与二维程序不同，注意差别）(Juny 2014.8.27)
+	double m_dConcretDensity;  //混凝土密度
 	//double m_dAggDensity;    //骨料密度
 	double m_dBondRatio;// 加载端摩擦约束系数（切向砂浆弹簧刚度）
 
@@ -82,7 +83,6 @@ public:
 	void SetElePara();//宏观微观材料参数转化关系,暂时取微观参数等于对话框直接输入的参数，
 	                  //待得出规律后在此处完善转化关系，界时对话框直接输入宏观材料参数不必在乘系数之类
 	void SetSprStiff(double MorEleE, double MorEleV, double BondRatio);   //砂浆弹簧刚度系数
-	void 
 	void SetIntStiff(double IntEleE, double IntEleV);  //界面弹簧刚度系数
 	//void SetAggStiff(double AggEleE, double AggEleV);  //骨料弹簧刚度系数
 
